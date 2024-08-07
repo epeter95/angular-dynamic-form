@@ -1,0 +1,24 @@
+<div [formGroup]="form">
+  <label [for]="control.key">{{ control.label }}</label>
+  <div>
+    @switch (control.controlType) {
+      @case (ControlType.checkbox) {
+        <input [formControlName]="control.key" [name]="control.key" [id]="control.key" type="checkbox">
+      }
+      @case (ControlType.textbox) {
+        <input [formControlName]="control.key" [id]="control.key" [type]="control.controlType">
+      }
+      @case (ControlType.input) {
+        <input [formControlName]="control.key" [id]="control.key" [type]="control.inputType">
+      }
+      @case (ControlType.dropdown) {
+        <select [id]="control.key" [formControlName]="control.key">
+          @for (opt of control.options; track opt) {
+            <option [value]="opt.key">{{ opt.value }}</option>
+          }
+        </select>
+      }
+    }
+  </div>
+  @if (!isValid) {<div class="errorMessage"> {{ control.label }} is has an error</div>}
+</div>
