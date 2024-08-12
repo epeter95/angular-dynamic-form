@@ -1,45 +1,38 @@
-import {Observable, of} from "rxjs";
-import {ControlBase, ControlBaseInputTypes, FormBase, SelectOptions} from "../dynamic-form/classes/control-base";
+import {SelectOptions} from "../dynamic-form/classes/control-base";
 import {CheckboxControl, DropdownControl, TextboxControl} from "../dynamic-form/classes/control-classes";
-import {FormGroup, Validators} from "@angular/forms";
-
-
-export const quizForm: FormBase = {
-  form: new FormGroup<any>({}),
-  controls: getTestControls(),
-  submit: () =>{}
-}
-
-export function getTestControls(): Observable<ControlBase<any>[]> {
-  const controls: ControlBase<any>[] = [
-  new DropdownControl(
+import {Validators} from "@angular/forms";
+import {GetFormType} from "../dynamic-form/classes/form-base";
+// Extract the type from EXAMPLE_FORM
+export type EXAMPLE_FORM_TYPE = {
+  [K in keyof typeof EXAMPLE_FORM]: GetFormType<typeof EXAMPLE_FORM[K]>;
+};
+export const EXAMPLE_FORM = {
+  favoriteAnimal: new DropdownControl(
     'favoriteAnimal',
     'cat',
     {
-    label: 'Favorite Animal',
-    options: [
-      {key: 'cat', value: 'Cat'},
-      {key: 'dog', value: 'Dog'},
-      {key: 'horse', value: 'Horse'},
-      {key: 'capybara', value: 'Capybara'},
-    ] as SelectOptions[],
-    order: 3,
-  }),
-  new TextboxControl('firstName','Alex',{
+      label: 'Favorite Animal',
+      options: [
+        {key: 'cat', value: 'Cat'},
+        {key: 'dog', value: 'Dog'},
+        {key: 'horse', value: 'Horse'},
+        {key: 'capybara', value: 'Capybara'},
+      ] as SelectOptions[],
+      order: 3,
+    }),
+  firstName: new TextboxControl('firstName','Alex',{
     label: 'First name',
     validators: [Validators.required],
     order: 1,
   }),
-  new TextboxControl('emailAddress','',{
-    label: 'Email',
-    inputType: ControlBaseInputTypes.email,
+  lastName: new TextboxControl('lastName','Huge',{
+    label: 'First name',
+    validators: [Validators.required],
     order: 2,
   }),
-  new CheckboxControl('touche',false,{
+  touche: new CheckboxControl('touche',false,{
     label: 'Accept checkbox',
     validators: [Validators.requiredTrue],
     order: 4,
   }),
-];
-return of(controls.sort((a, b) => a.order - b.order));
-}
+} as const;

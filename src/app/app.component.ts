@@ -1,12 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {Observable, of} from "rxjs";
-import {CheckboxControl, DropdownControl, TextboxControl} from "./dynamic-form/classes/control-classes";
-import {ControlBase, ControlBaseInputTypes} from "./dynamic-form/classes/control-base";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DynamicFormComponent} from "./dynamic-form/dynamic-form.component";
 import {AsyncPipe} from "@angular/common";
-import {quizForm} from "./test-classes/test";
+import {EXAMPLE_FORM, EXAMPLE_FORM_TYPE} from "./test-classes/test";
 
 @Component({
   selector: 'app-root',
@@ -16,6 +12,13 @@ import {quizForm} from "./test-classes/test";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'general-forms-pilot';
-  quizForm = quizForm;
+  myForm = EXAMPLE_FORM;
+
+  @ViewChild(DynamicFormComponent) dynamicForm!: DynamicFormComponent<EXAMPLE_FORM_TYPE>;
+
+  ngOnInit() {
+    this.dynamicForm.form.value;
+/*    this.dynamicForm.form.controls.name; // this will work
+    this.dynamicForm.form.controls.age; */// this will throw an error
+  }
 }

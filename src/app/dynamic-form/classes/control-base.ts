@@ -1,6 +1,4 @@
-import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
-import {Observable} from "rxjs";
-import {getTestControls} from "../../test-classes/test";
+import { ValidatorFn} from "@angular/forms";
 
 export enum ControlType{
   dropdown = 'dropdown',
@@ -23,13 +21,6 @@ export interface SelectOptions{
   infoText: string;
 }
 
-
-// Ez nem interface, hanem class és itt lehetne a controlokból felépíteni a formot valahogy esetleg típussal
-export interface FormBase{
-  form: FormGroup;
-  controls: Observable<ControlBase<any>[]>;
-  submit: any;
-}
 
 export class ControlBase<T> {
   value: T;

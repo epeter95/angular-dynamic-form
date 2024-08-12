@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators} from "@angular/forms";
-import {DynamicFormService} from "./services/dynamic-form.service";
+import {FormControl, FormGroup, ReactiveFormsModule, ValidationErrors} from "@angular/forms";
 import {ControlBase} from "./classes/control-base";
 import {DynamicFormControlComponent} from "./components/dynamic-form-control/dynamic-form-control.component";
+import {ControlsOf, FormModel} from "./classes/form-base";
 
 @Component({
   selector: 'app-dynamic-form',
@@ -11,17 +11,38 @@ import {DynamicFormControlComponent} from "./components/dynamic-form-control/dyn
   templateUrl: './dynamic-form.component.html',
   styleUrl: './dynamic-form.component.scss'
 })
-export class DynamicFormComponent implements OnInit {
-  //Csak a controls az angular példa, de lehetne valahogy a FormBaseben kigenerálni a controlokból a formot
-  @Input() formGroup!: FormGroup;
-  @Input() controls: ControlBase<any>[] | null = [];
-  form!: FormGroup;
-  payLoad = '';
+export class DynamicFormComponent<T extends Record<string, any>> implements OnInit {
+  @Input() formModel!: FormModel;
 
-  constructor(private fcs: DynamicFormService) {}
-  ngOnInit() {
-    this.form = this.fcs.toFormGroup(this.controls as ControlBase<any>[]);
+  formInputs!: ControlBase<any>[];
+  form!: FormGroup<ControlsOf<T>>;
+  payLoad: any;
+
+
+  getFormModelKeys(): ControlBase<any>[] {
+    return Object.keys(this.formModel).map((k) => this.formModel[k]);
   }
+
+  private toFormGroup(): FormGroup<ControlsOf<T>> {
+    const group = Object.keys(this.formModel)
+      .map((k) => {
+        const field = this.formModel[k];
+        return {
+          [field.key]: new FormControl<typeof field.value>(
+            field.value,
+            field.validators
+          ),
+        };
+      })
+      .reduce((a, b) => Object.assign(a, b), {});
+    return new FormGroup(group as ControlsOf<T>);
+  }
+
+  constructor() {}
+  ngOnInit(): void {
+    this.form = this.toFormGroup();
+  }
+
   onSubmit() {
     console.log('form values: ', this.form.value);
     this.getFormValidationErrors()

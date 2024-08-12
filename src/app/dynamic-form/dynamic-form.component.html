@@ -1,9 +1,9 @@
 <div>
   <ng-content #beforeContent></ng-content>
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    @for (control of controls; track control) {
+    @for (field of getFormModelKeys(); track field) {
       <div class="form-row">
-        <app-dynamic-form-control [control]="control" [form]="form"></app-dynamic-form-control>
+        <app-dynamic-form-control [control]="field" [form]="form"></app-dynamic-form-control>
       </div>
     }
     <div class="form-row">
