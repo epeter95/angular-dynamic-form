@@ -1,18 +1,12 @@
 <div>
-  <ng-content #beforeContent></ng-content>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formBase.form">
     @for (field of getFormModelKeys(); track field) {
       <div class="form-row">
-        <app-dynamic-form-control [control]="field" [form]="form"></app-dynamic-form-control>
+        <app-dynamic-form-control [control]="field" [form]="formBase.form"></app-dynamic-form-control>
       </div>
     }
     <div class="form-row">
       <button type="submit">Save</button>
     </div>
   </form>
-  @if (payLoad) {
-    <div class="form-row">
-      <strong>Saved the following values</strong><br>{{ payLoad }}
-    </div>
-  }
 </div>

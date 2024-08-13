@@ -31,6 +31,8 @@ export class ControlBase<T> {
   validators: ValidatorFn[] | null;
   inputType: ControlBaseInputTypes | null;
   options: SelectOptions[];
+  show: boolean;
+  optionalControl: boolean;
   constructor(
     key: string,
     value: T,
@@ -41,6 +43,8 @@ export class ControlBase<T> {
       options?: SelectOptions[];
       validators?: ValidatorFn[];
       onChange?: (data: any)=>{};
+      show?: boolean;
+      optionalControl?: boolean;
     } = {},
   ) {
     this.value = value;
@@ -50,5 +54,7 @@ export class ControlBase<T> {
     this.inputType = optionalParameters.inputType || null;
     this.options = optionalParameters.options || [];
     this.validators = optionalParameters.validators || null;
+    this.show = optionalParameters.show || true;
+    this.optionalControl = optionalParameters.optionalControl || false;
   }
 }

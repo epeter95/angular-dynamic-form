@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, ValidationErrors} from "@angular/forms";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ReactiveFormsModule, ValidationErrors} from "@angular/forms";
 import {ControlBase} from "./classes/control-base";
 import {DynamicFormControlComponent} from "./components/dynamic-form-control/dynamic-form-control.component";
-import {ControlsOf, FormModel} from "./classes/form-base";
+import {FormBase} from "./classes/form-base";
 
 @Component({
   selector: 'app-dynamic-form',
@@ -11,47 +11,28 @@ import {ControlsOf, FormModel} from "./classes/form-base";
   templateUrl: './dynamic-form.component.html',
   styleUrl: './dynamic-form.component.scss'
 })
-export class DynamicFormComponent<T extends Record<string, any>> implements OnInit {
-  @Input() formModel!: FormModel;
-
-  formInputs!: ControlBase<any>[];
-  form!: FormGroup<ControlsOf<T>>;
-  payLoad: any;
-
+export class DynamicFormComponent implements OnInit {
+  @Input() formBase!: FormBase<any>;
+  @Output() submitted = new EventEmitter<void>();
 
   getFormModelKeys(): ControlBase<any>[] {
-    return Object.keys(this.formModel).map((k) => this.formModel[k]);
+    return Object.keys(this.formBase.formModel).map((key) => this.formBase.formModel[key]).filter(element=>element.show);
   }
-
-  private toFormGroup(): FormGroup<ControlsOf<T>> {
-    const group = Object.keys(this.formModel)
-      .map((k) => {
-        const field = this.formModel[k];
-        return {
-          [field.key]: new FormControl<typeof field.value>(
-            field.value,
-            field.validators
-          ),
-        };
-      })
-      .reduce((a, b) => Object.assign(a, b), {});
-    return new FormGroup(group as ControlsOf<T>);
-  }
-
   constructor() {}
-  ngOnInit(): void {
-    this.form = this.toFormGroup();
-  }
+
+  ngOnInit(): void {}
 
   onSubmit() {
-    console.log('form values: ', this.form.value);
-    this.getFormValidationErrors()
-    this.payLoad = JSON.stringify(this.form.getRawValue());
+    if(this.formBase.form.valid){
+      this.submitted.emit();
+    } else {
+      this.getFormValidationErrors();
+    }
   }
 
   getFormValidationErrors() {
-    Object.keys(this.form.controls).forEach(key => {
-      const controlErrors: ValidationErrors = this.form.controls[key].errors!;
+    Object.keys(this.formBase.form.controls).forEach(key => {
+      const controlErrors: ValidationErrors = this.formBase.form.controls[key].errors!;
       if (controlErrors != null) {
         Object.keys(controlErrors).forEach(keyError => {
           console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
