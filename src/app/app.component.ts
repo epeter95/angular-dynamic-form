@@ -17,18 +17,17 @@ export class AppComponent implements OnInit {
   myForm = new FormBase<EXAMPLE_FORM_TYPE>(EXAMPLE_FORM);
   ngOnInit() {
     this.myForm.form.controls.favouriteAnimal.valueChanges.subscribe(value=>{
-      console.log('value: ', value);
       if(value=='dog'){
-        this.myForm.form.removeControl('lastName');
+        this.myForm.form.controls.lastName.disable();
         this.myForm.formModel['lastName'].show = false;
       } else {
-        this.myForm.form.addControl('lastName', new FormControl(this.myForm.formModel['lastName'].value));
+        this.myForm.form.controls.lastName.enable();
         this.myForm.formModel['lastName'].show = true;
       }
     });
   }
 
-  onSubmit(): void{
-    console.log('form value: ', this.myForm.form.getRawValue());
+  onSubmit(value: typeof this.myForm.form.value): void{
+    console.log('form value: ', value);
   }
 }

@@ -13,7 +13,8 @@ import {FormBase} from "./classes/form-base";
 })
 export class DynamicFormComponent implements OnInit {
   @Input() formBase!: FormBase<any>;
-  @Output() submitted = new EventEmitter<void>();
+  @Output() submitted = new EventEmitter<any>();
+  @Input() rawValueNeeded: boolean = false;
 
   getFormModelKeys(): ControlBase<any>[] {
     return Object.keys(this.formBase.formModel).map((key) => this.formBase.formModel[key]).filter(element=>element.show);
@@ -24,7 +25,7 @@ export class DynamicFormComponent implements OnInit {
 
   onSubmit() {
     if(this.formBase.form.valid){
-      this.submitted.emit();
+      this.submitted.emit(this.rawValueNeeded ? this.formBase.form.getRawValue() : this.formBase.form.value);
     } else {
       this.getFormValidationErrors();
     }

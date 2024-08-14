@@ -33,6 +33,13 @@ export const EXAMPLE_FORM = {
     order: 4,
   }),
 };
+
+export type EXAMPLE_FORM_TYPE = {
+  [K in keyof typeof EXAMPLE_FORM]: GetFormType<typeof EXAMPLE_FORM[K]>;
+};
+
+
+// add/remove controlos megoldáshoz, nics kész, legalsó ami működik!!
 /*let optionalKeys = Object.keys(EXAMPLE_FORM).filter(key=>EXAMPLE_FORM[key as keyof typeof EXAMPLE_FORM].optionalControl);
 let requiredKeys = Object.keys(EXAMPLE_FORM).filter(key=>!EXAMPLE_FORM[key as keyof typeof EXAMPLE_FORM].optionalControl);
 // @ts-ignore
@@ -62,9 +69,9 @@ type requiredTestTypes = {
 // Extract the type from EXAMPLE_FORM
 /*export type EXAMPLE_FORM_TYPE = MergeObjectTypes<requiredTestTypes, optionalTestTypes>*/
 
-export type EXAMPLE_FORM_TYPE = {
+/*export type EXAMPLE_FORM_TYPE = {
   lastName?: GetFormType<typeof EXAMPLE_FORM['lastName']>,
   favouriteAnimal: GetFormType<typeof EXAMPLE_FORM['favouriteAnimal']>,
   firstName: GetFormType<typeof EXAMPLE_FORM['firstName']>,
   touche: GetFormType<typeof EXAMPLE_FORM['touche']>
-}
+}*/
