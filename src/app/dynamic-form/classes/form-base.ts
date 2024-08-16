@@ -19,16 +19,6 @@ export type GetFormType<T extends ControlBase<any>> = T extends {valueType: infe
   ? V
   : never;
 
-export function getControlTypeKeys(model: FormModel, optional: boolean): FormModel {
-  const keys = Object.keys(model).filter(key=>optional ? model[key as keyof typeof model].optionalControl : !model[key as keyof typeof model].optionalControl);
-  let result = {};
-  for(const key of keys){
-    // @ts-ignore
-    result[key] = model[key as keyof typeof model];
-  }
-  return result;
-}
-
 export class FormBase<T extends Record<string, any>>{
   formModel!: FormModel;
   form!: FormGroup<ControlsOf<T>>;

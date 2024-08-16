@@ -1,0 +1,9 @@
+<form [formGroup]="form">
+  <div class="label-container">
+    <label [for]="control.key">
+      {{ control.controlLabel | translate }}
+    </label>
+    <!--<app-info-icon *ngIf="!!control.infoText"></app-info-icon>-->
+  </div>
+  <textarea type="text" [formControlName]="control.key" [id]="control.key" [rows]="4" [cols]="30"></textarea>
+</form>

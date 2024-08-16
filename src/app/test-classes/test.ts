@@ -1,36 +1,45 @@
-import {ControlBase, SelectOptions} from "../dynamic-form/classes/control-base";
-import {CheckboxControl, DropdownControl, TextboxControl} from "../dynamic-form/classes/control-classes";
+import {SelectAndRadioOptions} from "../dynamic-form/classes/control-base";
+import {CheckboxControl, DropdownControl, InputControl, RadioControl, TextareaControl} from "../dynamic-form/classes/control-classes";
 import {Validators} from "@angular/forms";
-import {FormModel, GetFormType, MergeObjectTypes,getControlTypeKeys} from "../dynamic-form/classes/form-base";
+import {GetFormType} from "../dynamic-form/classes/form-base";
 
 export const EXAMPLE_FORM = {
   favouriteAnimal: new DropdownControl(
     'favouriteAnimal',
     'cat',
     {
-      label: 'Favorite Animal',
       options: [
         {key: 'cat', value: 'Cat'},
         {key: 'dog', value: 'Dog'},
         {key: 'horse', value: 'Horse'},
         {key: 'capybara', value: 'Capybara'},
-      ] as SelectOptions[],
+      ] as SelectAndRadioOptions[],
       order: 3,
     }),
-  firstName: new TextboxControl('firstName','Alex',{
-    label: 'First name',
+  gender: new RadioControl(
+    'gender',
+    '',
+    {
+      options: [
+        {key: 'male', value: 'Férfi'},
+        {key: 'female', value: 'Nő'},
+        {key: 'other', value: 'Egyéb'}
+      ] as SelectAndRadioOptions[],
+      order: 3,
+    }),
+  firstname: new InputControl('firstname','Alex',{
     validators: [Validators.required],
     order: 1,
   }),
-  lastName: new TextboxControl('lastName','Huge',{
-    label: 'Last name',
+  lastname: new InputControl('lastname','Huge',{
     order: 2,
-    optionalControl: true
   }),
   touche: new CheckboxControl('touche',false,{
-    label: 'Accept checkbox',
     validators: [Validators.requiredTrue],
     order: 4,
+  }),
+  message: new TextareaControl('message','',{
+    order: 2,
   }),
 };
 

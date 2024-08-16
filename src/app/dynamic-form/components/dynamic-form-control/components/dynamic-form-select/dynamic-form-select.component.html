@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+  <div class="label-container">
+    <label [for]="control.key">
+      {{ control.controlLabel | translate }}
+    </label>
+    <!--<app-info-icon *ngIf="!!control.infoText"></app-info-icon>-->
+  </div>
+  <select [id]="control.key" [formControlName]="control.key">
+    @for (opt of control.options; track opt) {
+      <option [value]="opt.key">{{ opt.value }}</option>
+    }
+  </select>
+</form>

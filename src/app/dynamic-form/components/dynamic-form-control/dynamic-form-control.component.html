@@ -1,24 +1,28 @@
 <div [formGroup]="form">
-  <label [for]="control.key">{{ control.label }}</label>
   <div>
     @switch (control.controlType) {
       @case (ControlType.checkbox) {
-        <input [formControlName]="control.key" [name]="control.key" [id]="control.key" type="checkbox">
+        <app-dynamic-form-checkbox [control]="control" [form]="form"></app-dynamic-form-checkbox>
       }
       @case (ControlType.textbox) {
-        <input [formControlName]="control.key" [id]="control.key" [type]="control.controlType">
+        <app-dynamic-form-textarea [control]="control" [form]="form"></app-dynamic-form-textarea>
       }
       @case (ControlType.input) {
-        <input [formControlName]="control.key" [id]="control.key" [type]="control.inputType">
+        <app-dynamic-form-input [control]="control" [form]="form"></app-dynamic-form-input>
       }
       @case (ControlType.dropdown) {
-        <select [id]="control.key" [formControlName]="control.key">
-          @for (opt of control.options; track opt) {
-            <option [value]="opt.key">{{ opt.value }}</option>
-          }
-        </select>
+        <app-dynamic-form-select [control]="control" [form]="form"></app-dynamic-form-select>
+      }
+      @case (ControlType.radio) {
+        <app-dynamic-form-radio [control]="control" [form]="form"></app-dynamic-form-radio>
+      }
+      @case (ControlType.datepicker) {
+        <app-dynamic-form-datepicker [control]="control" [form]="form"></app-dynamic-form-datepicker>
+      }
+      @case (ControlType.file) {
+        <app-dynamic-form-file-upload [control]="control" [form]="form"></app-dynamic-form-file-upload>
       }
     }
   </div>
-  @if (!isValid) {<div class="errorMessage"> {{ control.label }} is has an error</div>}
+  @if (!isValid) {<div class="errorMessage"> {{ control.prefix+'.'+control.key+'.label' | translate }} is has an error</div>}
 </div>

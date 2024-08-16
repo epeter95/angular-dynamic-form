@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+  <div class="label-container">
+    <label [for]="control.key">
+      {{ control.controlLabel | translate }}
+    </label>
+    <!--<app-info-icon *ngIf="!!control.infoText"></app-info-icon>-->
+  </div>
+  <div>
+    @for (opt of control.options; track opt) {
+      <input type="radio" [id]="control.key+'-'+opt.key" [name]="control.key" [formControlName]="control.key" [value]="opt.key">
+      <label [for]="control.key+'-'+opt.key">{{ opt.value }}</label><br>
+    }
+  </div>
+</form>
