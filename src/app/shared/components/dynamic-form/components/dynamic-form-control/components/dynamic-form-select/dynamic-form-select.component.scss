@@ -1,0 +1,12 @@
+ion-item {
+  --background: var(--ion-color-bg0);
+
+  &::part(native) {
+    padding: 0;
+    padding-left: 1rem;
+
+    .div {
+      padding: 0;
+    }
+  }
+}

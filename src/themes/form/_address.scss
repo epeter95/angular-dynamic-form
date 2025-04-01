@@ -1,0 +1,15 @@
+.dynamic-form-address-container {
+  .dynamic-form-address-input-container {
+    width: 100%;
+    position: relative;
+
+    .dynamic-form-address-input {
+      width: 100%;
+      border: 1px solid var(--base-theme-color-medium);
+      background: var(--base-theme-color-bg0);
+      color: var(--base-theme-color-dark);
+      height: var(--base-theme-form-default-height);
+      border-radius: 0;
+    }
+  }
+}

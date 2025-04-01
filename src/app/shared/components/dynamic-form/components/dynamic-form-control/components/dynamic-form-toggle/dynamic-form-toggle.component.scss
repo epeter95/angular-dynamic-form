@@ -1,0 +1,11 @@
+form {
+  .ion-text-wrap {
+    line-height: normal;
+  }
+}
+
+ion-toggle {
+  &::part(track){
+    width: 4rem;
+  }
+}

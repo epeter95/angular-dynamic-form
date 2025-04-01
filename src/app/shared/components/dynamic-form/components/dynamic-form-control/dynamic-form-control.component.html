@@ -1,0 +1,60 @@
+<div [class]="'dynamic-form-row mb-4 ' + (control.controlClasses || ControlBackground.transparent)">
+  <div [ngClass]="{ 'field-required': isFieldRequired }">
+    <form [formGroup]="form">
+      @switch (control.controlType) {
+        @case (ControlType.password) {
+          <app-dynamic-form-password [control]="control" [form]="form">
+          </app-dynamic-form-password>
+        }
+        @case (ControlType.checkbox) {
+          <app-dynamic-form-checkbox [control]="control" [form]="form">
+            @if (!!control.componentRef) {
+              @switch (control.componentRef) {
+
+              }
+            }
+          </app-dynamic-form-checkbox>
+        }
+        @case (ControlType.toggle) {
+          <app-dynamic-form-toggle [control]="control" [form]="form"/>
+        }
+        @case (ControlType.textbox) {
+          <app-dynamic-form-textarea [control]="control" [form]="form"/>
+        }
+        @case (ControlType.input) {
+          <app-dynamic-form-input [control]="control" [form]="form"/>
+        }
+        @case (ControlType.numberInput) {
+          <app-dynamic-form-input [control]="control" [form]="form"/>
+        }
+        @case (ControlType.counterInput) {
+          <app-dynamic-form-counter-input [control]="control" [form]="form"/>
+        }
+        @case (ControlType.dropdown) {
+          <app-dynamic-form-select [control]="control" [form]="form"/>
+        }
+        @case (ControlType.label) {
+          <app-dynamic-form-label [control]="control" [form]="form"/>
+        }
+        @case (ControlType.radio) {
+          <app-dynamic-form-radio [control]="control" [form]="form"/>
+        }
+        @case (ControlType.radioCard) {
+          <app-dynamic-form-radio-card [control]="control" [form]="form"/>
+        }
+        @case (ControlType.datepicker) {
+          <app-dynamic-form-datepicker [control]="control" [form]="form"/>
+        }
+      }
+    </form>
+  </div>
+  @if (control.info.length > 0 && control.infoCondition(form.value[control.key])) {
+    <div class="p-4 mt-2 bg-tertiary c-white">
+      @for (element of control.info; track element.text; let i = $index) {
+        <div [class.mt-4]="i > 0">
+          {{ element.text | translate: element.params }}
+        </div>
+      }
+    </div>
+  }
+</div>

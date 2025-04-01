@@ -1,0 +1,54 @@
+
+.field-required {
+  border-left: 2px solid var(--base-theme-color-warning);
+  margin-left: -0.75rem;
+  padding-left: 0.5rem;
+}
+
+.label-disabled {
+  opacity: 0.5;
+}
+
+.invalid {
+  border: 0.1rem solid var(--base-theme-color-danger);
+}
+
+.dynamic-form-input-label,
+.dynamic-form-radio-options-label,
+.dynamic-form-checkbox-label {
+  color: var(--base-theme-color-dark);
+}
+
+.dynamic-form-wrapper {
+  .dynamic-form-container {
+    .dynamic-form-row {
+      &.transparent {
+        background: transparent;
+      }
+
+      &.white-bg {
+        background: var(--base-theme-color-white);
+      }
+
+      &.grey-bg {
+        background: var(--base-theme-color-light-tint);
+      }
+
+      &.box-shadow-bg {
+        background: transparent;
+        box-shadow: var(--base-theme-form-control-default-shadow);
+      }
+    }
+  }
+}
+
+.form-group {
+  ion-list {
+    background: transparent;
+    width: 100%;
+
+    ion-item {
+      --background: transparent;
+    }
+  }
+}

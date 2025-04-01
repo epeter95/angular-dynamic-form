@@ -1,17 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {DynamicFormComponent} from "./dynamic-form/dynamic-form.component";
 import {AsyncPipe} from "@angular/common";
-import {EXAMPLE_FORM, EXAMPLE_FORM_TYPE} from "./test-classes/test";
-import {FormBase} from "./dynamic-form/classes/form-base";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {FormBase} from "./shared/components/dynamic-form/classes/form-base";
+import {SharedModule} from "./shared/shared.module";
+import {ExampleForm, ExampleFormType} from "./test-classes/test";
 
 @Component({
   imports: [
     RouterOutlet,
-    DynamicFormComponent,
+    SharedModule,
     AsyncPipe,
     TranslateModule
   ],
@@ -21,7 +19,7 @@ import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  myForm = new FormBase<EXAMPLE_FORM_TYPE>(EXAMPLE_FORM);
+  myForm = new FormBase<ExampleFormType>( new ExampleForm().form, '');
   constructor(translate: TranslateService) {
     translate.addLangs(['hu']);
     translate.setDefaultLang('hu');

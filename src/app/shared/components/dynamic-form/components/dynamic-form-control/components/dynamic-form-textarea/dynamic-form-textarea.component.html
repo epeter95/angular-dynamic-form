@@ -1,0 +1,43 @@
+<form [formGroup]="form">
+  <div class="dynamic-form-textarea-container">
+    <div class="dynamic-form-textarea-label c-dark font-m mb-2">
+      <label [for]="control.key">
+        {{ control.controlLabel | translate }}
+      </label>
+    </div>
+    @if (getControlErrorState(form, control) && showError) {
+      <app-dynamic-form-error-popover
+        [text]="getErrorText(form, control)"
+      ></app-dynamic-form-error-popover>
+    }
+    <textarea
+      (focusin)="showError = true"
+      (focusout)="showError = false"
+      [placeholder]="control.controlPlaceholder | translate"
+      class="dynamic-form-textarea c-dark bg-0 py-3 px-2"
+      type="text"
+      [ngClass]="{ 'control-invalid': getControlErrorState(form, control) }"
+      [maxlength]="control.maxLength || null"
+      [formControlName]="control.key"
+      [id]="control.key"
+    >
+    </textarea>
+    @if (control.subtext) {
+      <div class="d-flex f-justify-between c-dark py-1 font-m">
+        <div class="w-70">
+          @if (control.prefix) {
+            {{ control.prefix + '.' + control.subtext | translate }}
+          } @else {
+            {{ control.subtext | translate }}
+          }
+        </div>
+        @if (control.maxLength) {
+          <div class="d-flex">
+            {{ form.controls[control.key].value.length }} /
+            {{ control.maxLength }}
+          </div>
+        }
+      </div>
+    }
+  </div>
+</form>

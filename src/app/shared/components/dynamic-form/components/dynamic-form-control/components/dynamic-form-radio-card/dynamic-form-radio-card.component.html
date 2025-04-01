@@ -1,0 +1,62 @@
+<form [formGroup]="form">
+  <div class="dynamic-form-radio-card-container">
+    <div class="dynamic-form-radio-card-label mb-2 c-dark">
+      <label [for]="control.key">
+        {{ control.controlLabel | translate }}
+      </label>
+    </div>
+    <div class="dynamic-form-radio-card-value d-flex g-2">
+      @for (opt of control.cardOptions; track opt) {
+        <input
+          type="radio"
+          hidden
+          class="dynamic-form-radio-card-option-value"
+          [id]="control.key + '-' + opt.value"
+          [name]="control.key"
+          [formControlName]="control.key"
+          [value]="opt.value"
+        />
+        <label
+          [ngClass]="{
+            'option-active': opt.value === form.get(control.key)?.value,
+          }"
+          class="dynamic-form-radio-card-options-container d-flex-center f-column py-4 px-2 flex-1"
+          [for]="control.key + '-' + opt.value"
+        >
+          @if (!!opt.img) {
+<!--            <ion-icon [name]="opt.img" class="icon-xl mb-2"></ion-icon>-->
+          }
+          <div class="text-center dynamic-form-radio-card-option-text">
+            {{
+              control.translateNeeded
+                ? (control.prefix + '.' + control.key + '.' + opt.label
+                  | translate)
+                : opt.label
+            }}
+          </div>
+        </label>
+      }
+    </div>
+    @if (!!getOptionInfo()) {
+      <div class="mt-4 bg-tertiary c-white p-4">
+        <div>
+          {{ getOptionInfo()!.text | translate: getOptionInfo()!.params }}
+        </div>
+        @if (!!getOptionInfo()!.link && !!getOptionInfo()!.linkText) {
+          <a
+            [href]="getOptionInfo()!.link"
+            target="_blank"
+            class="link-button-info-small w-100 mt-4"
+          >
+            <span>{{ getOptionInfo()!.linkText! | translate }}</span>
+<!--            <ion-icon-->
+<!--              class="icon-m mr-3"-->
+<!--              color="white"-->
+<!--              name="angle-right"-->
+<!--            ></ion-icon>-->
+          </a>
+        }
+      </div>
+    }
+  </div>
+</form>

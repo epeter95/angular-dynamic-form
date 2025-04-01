@@ -1,0 +1,27 @@
+.dynamic-form-radio-card-container {
+  .dynamic-form-radio-card-value {
+    .dynamic-form-radio-card-option-value {
+      width: 0;
+      height: 0;
+    }
+
+    .dynamic-form-radio-card-options-container {
+      background-color: var(--base-theme-color-bg1);
+      border: 1px solid var(--base-theme-color-text);
+      border-radius: 0;
+
+      .dynamic-form-radio-card-option-text,
+      &.option-active {
+        background: var(--base-theme-color-primary);
+
+        .dynamic-form-radio-card-option-text {
+          color: var(--base-theme-color-white);
+        }
+      }
+
+      .dynamic-form-radio-card-options-label {
+        flex-grow: 1;
+      }
+    }
+  }
+}

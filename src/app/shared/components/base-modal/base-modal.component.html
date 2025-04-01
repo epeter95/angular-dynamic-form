@@ -1,0 +1,45 @@
+<!--<ion-modal-->
+<!--  #modal-->
+<!--  (willDismiss)="onDismiss($event)"-->
+<!--  (willPresent)="onWillPresentChange.emit($event)"-->
+<!--  [isOpen]="isOpen"-->
+>
+<!--  <ng-template>-->
+<!--    <ion-header class="ion-no-border">-->
+<!--      <ion-toolbar color="primary-dark">-->
+<!--        <ion-icon (click)="cancel()" name="chevron-back-outline"></ion-icon>-->
+<!--        <div class="font-l font-verlag" slot="end">-->
+<!--          {{ modalTitle | translate }}-->
+<!--        </div>-->
+<!--      </ion-toolbar>-->
+<!--    </ion-header>-->
+<!--    <ion-content>-->
+<!--      <div-->
+<!--        class="d-flex f-column f-justify-between f-align-center h-100"-->
+<!--        [class.p-4]="basePadding"-->
+<!--      >-->
+<!--        <ng-content></ng-content>-->
+<!--        <div-->
+<!--          class="pb-safe d-flex-center f-column g-2 w-100 mt-4"-->
+<!--          [class.p-4]="!basePadding"-->
+<!--        >-->
+<!--          @if (showConfirm) {-->
+<!--            <ion-button-->
+<!--              class="w-100"-->
+<!--              [disabled]="confirmDisabled"-->
+<!--              (click)="confirm()"-->
+<!--              color="primary"-->
+<!--            >-->
+<!--              {{ confirmButton | translate }}-->
+<!--            </ion-button>-->
+<!--          }-->
+<!--          @if (showCancel) {-->
+<!--            <ion-button color="primary-invert" class="w-100" (click)="cancel()">-->
+<!--              {{ cancelButton | translate }}-->
+<!--            </ion-button>-->
+<!--          }-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </ion-content>-->
+<!--  </ng-template>-->
+<!--</ion-modal>-->

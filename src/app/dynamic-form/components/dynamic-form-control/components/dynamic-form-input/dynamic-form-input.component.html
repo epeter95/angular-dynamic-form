@@ -1,9 +1,0 @@
-<form [formGroup]="form">
-  <div class="label-container">
-    <label [for]="control.key">
-      {{ control.controlLabel | translate }}
-    </label>
-    <!--<app-info-icon *ngIf="!!control.infoText"></app-info-icon>-->
-  </div>
-<input [placeholder]="control.controlPlaceholder" [formControlName]="control.key" [id]="control.key" [type]="control.inputType">
-</form>

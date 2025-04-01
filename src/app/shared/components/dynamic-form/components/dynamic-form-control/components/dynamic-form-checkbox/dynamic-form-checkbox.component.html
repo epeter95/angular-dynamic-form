@@ -1,0 +1,41 @@
+<!--<form [formGroup]="form">-->
+<!--  <div class="dynamic-form-checkbox-container">-->
+<!--    <ion-checkbox-->
+<!--      [alignment]="control.checkboxAlignment"-->
+<!--      [color]="control.color"-->
+<!--      [formControlName]="control.key"-->
+<!--      [id]="control.key"-->
+<!--      [justify]="control.checkboxJustification"-->
+<!--      [labelPlacement]="control.checkboxLabelPlacement"-->
+<!--    >-->
+<!--      @if (!!control.componentRef) {-->
+<!--        <div class="ion-text-wrap c-dark">-->
+<!--          <ng-content></ng-content>-->
+<!--        </div>-->
+<!--      } @else {-->
+<!--        <span-->
+<!--          class="ion-text-wrap c-dark"-->
+<!--          [innerHTML]="-->
+<!--            (control.checkboxLabelWithLink-->
+<!--              ? control.controlLabel + '.text'-->
+<!--              : control.controlLabel-->
+<!--            ) | translate: control.labelParams-->
+<!--          "-->
+<!--        >-->
+<!--        </span>-->
+<!--      }-->
+<!--    </ion-checkbox>-->
+<!--    @if (control.checkboxLabelWithLink) {-->
+<!--      <a-->
+<!--        (click)="$event.stopPropagation()"-->
+<!--        class="c-primary-light fw-bold link-button-primary-light-small mt-4"-->
+<!--        [href]="control.controlLabel + '.link' | translate"-->
+<!--      >-->
+<!--        <span class="text-center w-100">{{-->
+<!--          control.controlLabel + '.linkText' | translate-->
+<!--        }}</span>-->
+<!--&lt;!&ndash;        <ion-icon class="icon-m mr-3" name="angle-right"></ion-icon>&ndash;&gt;-->
+<!--      </a>-->
+<!--    }-->
+<!--  </div>-->
+<!--</form>-->

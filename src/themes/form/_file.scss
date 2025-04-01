@@ -1,0 +1,18 @@
+.dynamic-form-file-container {
+  .dynamic-form-file-radio-value {
+    .dynamic-form-file-radio-options-container {
+      border: 1px solid var(--base-theme-color-medium);
+      border-radius: 0;
+
+      .dynamic-form-file-radio-options-value {
+        width: 1.25rem;
+        height: 1.25rem;
+        accent-color: var(--base-theme-color-primary);
+      }
+
+      .dynamic-form-file-radio-options-label {
+        flex-grow: 1;
+      }
+    }
+  }
+}

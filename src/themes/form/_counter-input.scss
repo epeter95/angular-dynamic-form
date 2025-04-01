@@ -1,0 +1,15 @@
+:root {
+  .dynamic-form-counter-input-container {
+    position: relative;
+
+    .dynamic-form-counter-input {
+      height: var(--base-theme-form-default-height);
+      border: 1px solid var(--base-theme-color-medium);
+      border-radius: 0;
+    }
+
+    button {
+      height: var(--base-theme-form-default-height);
+    }
+  }
+}

@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+  <div class="dynamic-form-radio-container">
+    @if (control.label !== CommonFormLangName.emptyLabel) {
+      <div class="dynamic-form-radio-label mb-4 c-dark">
+        <label [for]="control.key">
+          {{ control.controlLabel | translate }}
+        </label>
+      </div>
+    }
+    <div
+      class="dynamic-form-radio-value"
+      [ngClass]="{ 'd-flex g-6': control.radioDisplay === RadioDisplay.flex }"
+    >
+      @for (opt of control.options; track opt; let i = $index) {
+        <div
+          [ngClass]="{
+            'option-active': opt.value === form.get(control.key)?.value,
+          }"
+          class="dynamic-form-radio-options-container d-flex f-align-center g-2 mb-4 py-2"
+          [class.mt-4]="control.radioDisplay === RadioDisplay.grid && i > 0"
+        >
+          <input
+            class="dynamic-form-radio-options-value"
+            type="radio"
+            [id]="control.key + '-' + opt.value"
+            [name]="control.key"
+            [formControlName]="control.key"
+            [value]="opt.value"
+          />
+          <label
+            class="dynamic-form-radio-options-label"
+            [for]="control.key + '-' + opt.value"
+          >
+            {{
+              control.translateNeeded
+                ? (control.prefix + '.' + control.key + '.' + opt.label
+                  | translate)
+                : opt.label
+            }}
+          </label>
+        </div>
+      }
+    </div>
+  </div>
+</form>

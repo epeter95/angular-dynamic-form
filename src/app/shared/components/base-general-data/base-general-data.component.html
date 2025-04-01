@@ -1,0 +1,63 @@
+@if (translatesData | async; as translates) {
+  <div class="d-flex f-column g-4">
+    @for (data of baseGeneralData; track data) {
+      @if (
+        !!baseGeneralDataService.getBaseValue(data, dataSource) ||
+        !data.hideDataIfNull
+      ) {
+        <div class="w-100 font-m c-dark">
+          <div class="mb-2 fw-semibold" [class.fw-bold]="data.boldLabel">
+            {{ baseGeneralDataService.findProp(translates, data.key) }}
+          </div>
+          @if (
+            data.type === BaseGeneralDataType.array &&
+            baseGeneralDataService.getBaseValue(data, dataSource).length > 0
+          ) {
+            @for (
+              element of baseGeneralDataService.getBaseValue(data, dataSource);
+              track element;
+              let index = $index
+            ) {
+              <div class="c-dark mb-2">
+                {{ element }}
+              </div>
+            }
+          } @else {
+            @if (!!data.link) {
+              <button
+                class="text-left w-100 link-button bg-0 p-3 font-m c-dark d-block"
+                (click)="navigateLink(data)"
+              >
+                {{ baseGeneralDataService.getBaseValue(data, dataSource) }}
+              </button>
+            } @else {
+              <div class="c-dark">
+                {{ baseGeneralDataService.getBaseValue(data, dataSource) }}
+              </div>
+            }
+          }
+          <!--          @if (!!data.link) {-->
+          <!--            <ion-button class="d-block link-button" (click)="navigateLink(data)">-->
+          <!--              <ion-icon color="primary-dark" class="icon-m" name="edit-default"></ion-icon>-->
+          <!--            </ion-button>-->
+          <!--          }-->
+        </div>
+      }
+      @if (!!data.openConfirm) {
+<!--        <app-base-sheet-modal-->
+<!--          [isOpen]="(modalIsOpen | async)!"-->
+<!--          (onDismissChange)="onDismiss($event, data)"-->
+<!--          iconName="info-primary"-->
+<!--          title="baseGeneralData.canEditModal.title"-->
+<!--          [showCancel]="true"-->
+<!--          cancelButton="baseGeneralData.canEditModal.cancelButton"-->
+<!--          confirmButton="baseGeneralData.canEditModal.okButton"-->
+<!--        >-->
+<!--          <div class="font-xl c-dark text-center mb-6">-->
+<!--            {{ 'baseGeneralData.canEditModal.text' | translate }}-->
+<!--          </div>-->
+<!--        </app-base-sheet-modal>-->
+      }
+    }
+  </div>
+}

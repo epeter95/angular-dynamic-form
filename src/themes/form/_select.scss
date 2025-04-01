@@ -1,0 +1,35 @@
+.dynamic-form-select-container {
+  .dynamic-form-select-input-container {
+    position: relative;
+
+    &::part(native) {
+      &::after {
+        background: var(--base-theme-color-bg0);
+        opacity: 1;
+      }
+
+      background: var(--base-theme-color-bg0);
+      border: 1px solid var(--base-theme-color-medium);
+      border-radius: 0;
+      box-sizing: border-box;
+      padding: var(--size-2) var(--size-3) var(--size-2) var(--size-2);
+      font-size: var(--size-4);
+      margin: 0;
+      color: var(--base-theme-color-dark);
+      max-height: var(--base-theme-form-default-height);
+    }
+
+    .dynamic-form-select-input {
+      border: none;
+      width: 100%;
+    }
+  }
+}
+
+.dynamic-form-select-modal {
+  .dynamic-form-select-item {
+    &::part(native) {
+      --padding-end: var(--size-5);
+    }
+  }
+}

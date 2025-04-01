@@ -1,0 +1,16 @@
+.dynamic-form-input-container {
+  position: relative;
+
+  .dynamic-form-input {
+    height: var(--base-theme-form-default-height);
+    width: 100%;
+    border: 1px solid var(--base-theme-color-medium);
+    color: var(--base-theme-color-dark);
+    background: var(--base-theme-color-bg0);
+    border-radius: 0;
+
+    &.control-invalid {
+      border: 2px solid var(--base-theme-color-danger);
+    }
+  }
+}

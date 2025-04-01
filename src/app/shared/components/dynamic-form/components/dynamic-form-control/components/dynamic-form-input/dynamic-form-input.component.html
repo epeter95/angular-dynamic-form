@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+  <div class="dynamic-form-input-container">
+    <div class="dynamic-form-input-label c-dark font-m mb-2">
+      <label [for]="control.key">
+        {{ control.controlLabel | translate }}
+      </label>
+    </div>
+    @if (getControlErrorState(form, control) && showError) {
+      <app-dynamic-form-error-popover
+        [text]="getErrorText(form, control)"
+      ></app-dynamic-form-error-popover>
+    }
+    <input
+      (focusin)="showError = true"
+      (focusout)="showError = false"
+      [formControlName]="control.key"
+      [id]="control.key"
+      [ngClass]="{ 'control-invalid': getControlErrorState(form, control) }"
+      [placeholder]="control.controlPlaceholder | translate"
+      [type]="control.inputType || ControlBaseInputTypes.text"
+      class="dynamic-form-input p-2"
+      spellcheck="false"
+      autocomplete="off"
+      autocapitalize="off"
+    />
+  </div>
+</form>

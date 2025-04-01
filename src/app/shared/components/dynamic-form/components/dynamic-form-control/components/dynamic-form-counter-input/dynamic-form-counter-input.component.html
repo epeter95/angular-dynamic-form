@@ -1,0 +1,32 @@
+<form [formGroup]="form">
+  <div
+    class="dynamic-form-counter-input-container d-flex f-align-center f-justify-between"
+  >
+    <div class="w-50">
+      <label [for]="control.key" class="c-dark">
+        {{ control.controlLabel | translate }}
+      </label>
+    </div>
+    <input
+      [formControlName]="control.key"
+      [id]="control.key"
+      [placeholder]="0"
+      [max]="control.maximum"
+      [min]="control.minimum"
+      [type]="ControlBaseInputTypes.number"
+      class="dynamic-form-counter-input bg-0 c-dark p-2 w-15"
+    />
+    <button
+      (click)="calculateInput(false)"
+      class="w-15 px-4 bg-white c-text bg-0 font-l b-text"
+    >
+      -
+    </button>
+    <button
+      (click)="calculateInput(true)"
+      class="w-15 px-4 bg-primary-light c-white font-l fw-bold b-primary-light"
+    >
+      +
+    </button>
+  </div>
+</form>

@@ -1,0 +1,136 @@
+:root {
+  a {
+    margin: var(--size-0);
+    padding: var(--size-0);
+    color: var(--base-theme-color-secondary-tint);
+    text-decoration: none;
+  }
+
+  h1 {
+    color: var(--base-theme-color-primary);
+    margin: var(--size-0);
+    padding: var(--size-0);
+  }
+
+  h2 {
+    margin: var(--size-0);
+    padding: var(--size-3) var(--size-0);
+    font-size: var(--font-xl);
+    font-weight: var(--fw-bold);
+    color: var(--base-theme-color-dark);
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: var(--size-0);
+    padding: var(--size-0);
+    font-size: var(--font-l);
+    font-weight: var(--fw-bold);
+    color: var(--base-theme-color-primary);
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: var(--size-0);
+    padding: var(--size-0);
+  }
+
+  .lh-xl {
+    line-height: var(--line-height-2);
+  }
+
+  .lh-15 {
+    line-height: var(--line-height-3);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .text-justify {
+    text-align: justify;
+  }
+
+  // FONT-WEIGHT
+  .fw-normal {
+    font-weight: var(--fw-normal);
+  }
+
+  .fw-semibold {
+    font-family: 'Source Sans Pro', serif;
+    font-weight: var(--fw-semibold);
+  }
+
+  .fw-bold {
+    font-family: 'Source Sans Pro Bold', serif;
+    font-weight: var(--fw-bold);
+  }
+
+  .fw-extrabold {
+    font-family: 'Source Sans Pro ExtraBold', serif;
+    font-weight: var(--fw-extrabold);
+  }
+
+  .fw-black {
+    font-family: 'Source Sans Pro Black', serif;
+    font-weight: var(--fw-black);
+  }
+
+  // FONT-SIZE
+  .font-xxxxl {
+    font-size: var(--font-xxxxl);
+  }
+
+  .font-xxxl {
+    font-size: var(--font-xxxl);
+  }
+
+  .font-xxl {
+    font-size: var(--font-xxl);
+  }
+
+  .font-xl {
+    font-size: var(--font-xl);
+    line-height: 1.5rem;
+  }
+
+  .font-l {
+    font-size: var(--font-l);
+  }
+
+  .font-m {
+    font-size: var(--font-m);
+  }
+
+  .font-s {
+    font-size: var(--font-s);
+  }
+
+  .font-xs {
+    font-size: var(--font-xs);
+  }
+
+  .font-xxs {
+    font-size: var(--font-xxs);
+  }
+
+  .lh-normal {
+    line-height: var(--line-height-2);
+  }
+
+  .font-verlag {
+    font-family: Verlag-Black, serif;
+  }
+
+  .dec-underline {
+    text-decoration: underline;
+  }
+}

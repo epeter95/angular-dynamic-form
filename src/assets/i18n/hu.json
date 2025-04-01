@@ -1,9 +1,9 @@
 {
   "test": "Teszt szöveg",
-  "COMMON": {
-    "FORM": {
-      "EMPTY_LABEL": "",
-      "EMPTY_PLACEHOLDER": "",
+  "common": {
+    "form": {
+      "emptyLabel": "",
+      "emptyPlaceholder": "",
       "firstname": {
         "label": "Keresztnév"
       },
@@ -22,21 +22,6 @@
       "touche": {
         "label": "Általános szerződési feltételek"
       }
-    }
-  },
-  "WRITEUSFORM": {
-    "firstname": {
-      "label": "Keresztnév"
-    }
-  },
-  "PROFILEFORM": {
-    "firstname": {
-      "label": "Keresztnév"
-    }
-  },
-  "AGREEEMENTFORM": {
-    "firstname": {
-      "label": "Keresztnév"
     }
   },
   "exampleForm":{

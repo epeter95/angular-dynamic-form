@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+  @if (!!control.componentRef) {
+    @switch (control.componentRef) {
+
+    }
+  } @else {
+    <div [class]="control.labelClasses">
+      {{ control.controlLabel | translate: control.labelParams }}
+    </div>
+  }
+</form>

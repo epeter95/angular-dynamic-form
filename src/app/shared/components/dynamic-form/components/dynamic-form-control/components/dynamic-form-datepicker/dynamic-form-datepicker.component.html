@@ -1,0 +1,68 @@
+<!--<form [formGroup]="form">-->
+<!--  <div-->
+<!--    class="dynamic-form-datepicker-container"-->
+<!--    [ngClass]="{ 'full-size': control.fullSizeLabel }"-->
+<!--  >-->
+<!--    <div-->
+<!--      [class]="-->
+<!--        'dynamic-form-datepicker-label c-dark font-m mb-2 ' +-->
+<!--        getWidthClass(control.widthClass)-->
+<!--      "-->
+<!--    >-->
+<!--      <label [for]="control.key">-->
+<!--        {{ control.controlLabel | translate }}-->
+<!--      </label>-->
+<!--    </div>-->
+<!--    <ion-datetime-button-->
+<!--      class="c-text bg-0"-->
+<!--      [datetime]="-->
+<!--        customId || control.prefix + '.' + control.key + 'dynamic-form-datetime'-->
+<!--      "-->
+<!--    >-->
+<!--      <div-->
+<!--        class="dynamic-form-datetime-value-wrapper d-flex f-align-center f-justify-between"-->
+<!--        slot="date-target"-->
+<!--      >-->
+<!--        <div class="dynamic-form-datetime-value font-m">-->
+<!--          {{-->
+<!--            form.get(control.key)?.value | date: MainConstants.baseDateFormat-->
+<!--          }}-->
+<!--        </div>-->
+<!--        <ion-icon-->
+<!--          class="dynamic-form-datetime-icon c-text"-->
+<!--          name="calendar"-->
+<!--        ></ion-icon>-->
+<!--      </div>-->
+<!--    </ion-datetime-button>-->
+<!--    <ion-modal [keepContentsMounted]="true">-->
+<!--      <ng-template>-->
+<!--        <ion-datetime-->
+<!--          color="primary"-->
+<!--          (ionChange)="formatDate($event)"-->
+<!--          [formatOptions]="{ date: MainConstants.baseDateValueFormat }"-->
+<!--          [cancelText]="'dynamicForm.datepicker.cancel' | translate"-->
+<!--          [doneText]="'dynamicForm.datepicker.ok' | translate"-->
+<!--          [value]="form.value[control.key]"-->
+<!--          [id]="-->
+<!--            customId ||-->
+<!--            control.prefix + '.' + control.key + 'dynamic-form-datetime'-->
+<!--          "-->
+<!--          [presentation]="datepickerMode"-->
+<!--          [showDefaultButtons]="true"-->
+<!--          [min]="-->
+<!--            control.minDate-->
+<!--              ? (control.minDate | date: MainConstants.baseDateValueFormat)-->
+<!--              : undefined-->
+<!--          "-->
+<!--          [max]="-->
+<!--            control.maxDate-->
+<!--              ? (control.maxDate | date: MainConstants.baseDateValueFormat)-->
+<!--              : undefined-->
+<!--          "-->
+<!--          locale="hu-HU"-->
+<!--        >-->
+<!--        </ion-datetime>-->
+<!--      </ng-template>-->
+<!--    </ion-modal>-->
+<!--  </div>-->
+<!--</form>-->

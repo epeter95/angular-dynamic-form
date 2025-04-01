@@ -1,0 +1,36 @@
+@if (!!formBase) {
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="formBase.form"
+    class="dynamic-form-wrapper"
+  >
+    <ng-content select="[formHeader]"></ng-content>
+    <div
+      class="dynamic-form-container d-flex f-justify-between f-wrap f-align-end"
+    >
+      @for (field of getFormModelKeys(); track field) {
+        <app-dynamic-form-control
+          [class]="field.widthClass"
+          [control]="field"
+          [form]="formBase.form"
+        ></app-dynamic-form-control>
+      }
+    </div>
+
+    @if (submitButtonNeeded && !!formBase.id) {
+<!--      <ion-button-->
+<!--        [color]="submitButtonColor"-->
+<!--        [id]="formBase.id + '-button-submit'"-->
+<!--        [attr.aria-label]="formBase.id + '-button-submit'"-->
+<!--        class="font-l mt-4"-->
+<!--        [disabled]="formBase.form.invalid || extraDisabledCondition"-->
+<!--        type="submit"-->
+<!--      >-->
+<!--        <span>{{ submitButtonText | translate }}</span>-->
+<!--        @if (!!submitButtonIcon) {-->
+<!--          <ion-icon [name]="submitButtonIcon" class="ml-3 icon-m"></ion-icon>-->
+<!--        }-->
+<!--      </ion-button>-->
+    }
+  </form>
+}

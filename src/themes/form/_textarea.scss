@@ -1,0 +1,19 @@
+:root {
+  .dynamic-form-textarea-container {
+    .dynamic-form-textarea {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      border: 1px solid var(--base-theme-color-medium);
+      border-radius: 0;
+      box-sizing: border-box;
+      min-height: var(--base-theme-form-textarea-min-height);
+      background: var(--base-theme-color-bg0);
+      color: var(--base-theme-color-dark);
+
+      &.control-invalid {
+        border: 2px solid var(--base-theme-color-danger);
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+form {
+  ion-list {
+    height: fit-content;
+  }
+
+  .full-page {
+    ion-list {
+      min-height: 100%;
+    }
+  }
+}

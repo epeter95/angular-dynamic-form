@@ -1,0 +1,27 @@
+
+.dynamic-form-datepicker-container {
+  color: black;
+
+  &.full-size {
+    position: relative;
+    padding-top: 1.5rem;
+
+    .dynamic-form-datepicker-label {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .dynamic-form-datetime-value-wrapper {
+    background: transparent;
+    height: 100%;
+
+    .dynamic-form-datetime-icon {
+      margin: 0 0 0 auto;
+      width: 1.5rem;
+      color: var(--base-theme-color-text);
+      height: 1.375rem;
+    }
+  }
+}
